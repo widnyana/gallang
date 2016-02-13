@@ -1,0 +1,16 @@
+package main
+
+import (
+    "fmt"
+    "os"
+    "github.com/widnyana/gallang"
+)
+
+
+func main() {
+    var host string
+    host = fmt.Sprintf("%s:%s", os.Getenv("GALLANG_IP"), os.Getenv("GALLANG_PORT"))
+
+    app := gallang.New(host)
+    app.Run()
+}
