@@ -1,20 +1,22 @@
 package processor
 
 import (
-    "github.com/widnyana/oembed"
-    "io/ioutil"
-    "bytes"
+	"bytes"
+	"io/ioutil"
+
+	"github.com/widnyana/oembed"
 )
 
+// OEmbedParser will parse the rule and return oembed.Oembed object.
 func OEmbedParser() *oembed.Oembed {
-    rule, err := ioutil.ReadFile("src/github.com/widnyana/gallang/data/providers.json")
+	rule, err := ioutil.ReadFile("src/github.com/widnyana/oembed/providers.json")
 
-    if err != nil {
-        panic(err)
-    }
+	if err != nil {
+		panic(err)
+	}
 
-    svc := oembed.NewOembed()
-    svc.ParseProviders(bytes.NewReader(rule))
+	svc := oembed.NewOembed()
+	svc.ParseProviders(bytes.NewReader(rule))
 
-    return svc
+	return svc
 }

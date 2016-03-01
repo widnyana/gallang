@@ -7,17 +7,17 @@ import (
 // Gallang provide interface of gallang oembed app
 type Gallang struct {
 	App  *gin.Engine
-	host string
+	Host string
 }
 
 // New build a new application
 func New(addr string) *Gallang {
-	if len(addr) == 0 {
+	if len(addr) <= 1 {
 		addr = "0.0.0.0:5000"
 	}
 
 	app := new(Gallang)
-	app.host = addr
+	app.Host = addr
 	app.Build()
 
 	return app
@@ -48,6 +48,6 @@ func (g *Gallang) RouteHandle(httpMethod, relativePath string, handlers gin.Hand
 
 // Run gallang API
 func (g *Gallang) Run() (err error) {
-	err = g.App.Run(g.host)
+	err = g.App.Run(g.Host)
 	return err
 }
